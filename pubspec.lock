@@ -184,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.8"
+  tuple_dart:
+    dependency: "direct main"
+    description:
+      name: tuple_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.2"
   typed_data:
     dependency: transitive
     description:

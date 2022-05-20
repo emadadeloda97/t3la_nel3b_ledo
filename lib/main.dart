@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t3ala_nel3b_ludo/views/play_board.dart';
+import 'package:t3ala_nel3b_ludo/views/play_board_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,8 +9,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: PlayBoard(),
-    );
+    return GetMaterialApp(home: PlayBoardScreen());
   }
 }

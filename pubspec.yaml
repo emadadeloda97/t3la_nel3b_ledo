@@ -16,6 +16,7 @@ dependencies:
 
   flutter_svg: ^1.0.3
   get:
+  tuple_dart: ^1.4.2
 
 dev_dependencies:
   flutter_test:
