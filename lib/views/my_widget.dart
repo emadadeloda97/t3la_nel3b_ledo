@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t3ala_nel3b_ludo/constants.dart';
 import 'package:t3ala_nel3b_ludo/controllers/squars_controller.dart';
+import 'package:t3ala_nel3b_ludo/models/pieces.dart';
 import 'package:t3ala_nel3b_ludo/views/pinters.dart';
-
+import 'package:enhanced_enum/enhanced_enum.dart';
 import '../models/squar.dart';
 import '../my_icon_icons.dart';
 
@@ -220,6 +221,7 @@ class SmallSquarSheap extends StatelessWidget {
       ),
       squar.isHasPiece
           ? CircleAvatar(
+              backgroundColor: squar.pieceColor,
               child: Stack(children: []),
               radius: media.size.shortestSide * 0.2 / 3 / 2,
             )
@@ -319,6 +321,47 @@ class CenterSquarSheap extends StatelessWidget {
           painter: TopTrianglePainter(color: Colors.red),
         )
       ]),
+    );
+  }
+}
+
+class SquarList extends StatelessWidget {
+  List<Piece> pieces;
+  SquarList({Key? key, required this.pieces}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: pieces.length == 1
+          ? [CircleAvatar()]
+          : [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: CircleAvatar(
+                  radius: 7.5,
+                  backgroundColor: Colors.black,
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: CircleAvatar(
+                  radius: 7.5,
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: CircleAvatar(
+                  radius: 7.5,
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: CircleAvatar(
+                  backgroundColor: Colors.black,
+                  radius: 7.5,
+                ),
+              )
+            ],
     );
   }
 }

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t3ala_nel3b_ludo/constants.dart';
+import 'package:t3ala_nel3b_ludo/models/pieces.dart';
 import 'package:t3ala_nel3b_ludo/models/squar.dart';
+import 'package:t3ala_nel3b_ludo/views/my_widget.dart';
 
 class SquarsCtrl extends GetxController {
-  // RxList<List<Squar>> squarMx = <List<Squar>>[].obs;
   Rx<SquarsList> squarMx = SquarsList().obs;
-
-  void squarMxUpdate(void fn(val)) {
-    squarMx.update((val) {
-      fn(val);
-    });
-  }
 }
 
 class SquarsList {
@@ -92,13 +87,19 @@ class SquarsList {
 
 // ignore: must_be_immutable
 class TestWidget extends StatelessWidget {
-  Squar mySq;
-  TestWidget(this.mySq, {Key? key}) : super(key: key);
+  SquarsCtrl squarsCtrl;
+  Postisions paths = Postisions();
+
+  TestWidget({Key? key, required this.squarsCtrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('${mySq.color}'),
-    );
+    return SquarList(pieces: [
+      Piece(
+        path: paths.greenPath,
+        pieceColor: Colors.black,
+        squCtrl: squarsCtrl,
+      )
+    ]);
   }
 }

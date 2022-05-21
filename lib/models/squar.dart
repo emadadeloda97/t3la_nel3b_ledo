@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:t3ala_nel3b_ludo/constants.dart';
 import 'package:t3ala_nel3b_ludo/models/pieces.dart';
 
-enum SquarType { start, forColor, normal, protect }
-
 class Squar {
   Color color;
   SquarType squarType;
   bool isHasPiece;
   List<Piece> piecesList;
+  Color pieceColor;
 
   Squar(
       {this.color = SquarColors.transparent,
       this.squarType = SquarType.normal,
       this.isHasPiece = false,
-      this.piecesList = const []});
+      this.piecesList = const [],
+      this.pieceColor = SquarColors.transparent});
 
   set setColor(Color newColor) => color = newColor;
 

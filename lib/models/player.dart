@@ -1,41 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:t3ala_nel3b_ludo/controllers/squars_controller.dart';
+
 import 'package:tuple_dart/tuple.dart';
 
 import 'pieces.dart';
 
 class Player {
-  Color playerColor;
-  List<Piece> piecesPos;
-  int finishedPieces;
+  Map playerData;
+  List<Piece> playerPieces = [];
   bool isPlaying;
   bool isWin;
+  SquarsCtrl squCtrl;
+  MediaQueryData media;
   Player(
-      {required this.playerColor,
+      {required this.playerData,
       this.isPlaying = false,
-      this.finishedPieces = 0,
       this.isWin = false,
-      required this.piecesPos});
+      required this.media,
+      required this.squCtrl});
 
-  void addPiece(Piece p) {
-    piecesPos.add(p);
+  void addPiece() {
+    playerPieces.add(Piece(
+      path: playerData['path'],
+      pieceColor: playerData['color'],
+      squCtrl: squCtrl,
+    ));
   }
 
-  set setColor(Color color) {
-    playerColor = color;
+  void moveToStart(pieceNum) {
+    playerPieces[pieceNum].moveToStartPos();
+  }
+
+  void moveTo(pieceNum, step) {
+    playerPieces[pieceNum].moveTo(step);
   }
 
   set setIsPlaying(bool b) {
     isPlaying = b;
   }
 
-  void setFinishedPieces(int numb) {
-    finishedPieces = numb;
-    if (finishedPieces == 4) {
-      isWin = true;
-    }
-  }
-
   set setPiecePos(Tuple2<int, Piece> numPos) {
-    piecesPos[numPos.item1] = numPos.item2;
+    playerPieces[numPos.item1] = numPos.item2;
   }
 }

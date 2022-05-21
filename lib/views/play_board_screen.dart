@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t3ala_nel3b_ludo/constants.dart';
 import 'package:t3ala_nel3b_ludo/controllers/squars_controller.dart';
-import 'package:t3ala_nel3b_ludo/models/pieces.dart';
 import 'package:t3ala_nel3b_ludo/views/my_widget.dart';
 
 class PlayBoardScreen extends StatelessWidget {
@@ -12,23 +10,12 @@ class PlayBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData media = MediaQuery.of(context);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        Piece red = Piece(
-          posList: redPos,
-          pieceColor: SquarColors.red,
-          squCtrl: ctrl,
-          pieceFor: 'red',
-          media: media,
-        );
-
-        red.moveToStartPos();
-
-        red.moveTo(3);
-        red.moveTo(3);
-        red.moveTo(3);
-      }),
+      floatingActionButton: FloatingActionButton(onPressed: () async {}),
       body: SafeArea(
-        child: PlayBoardWidget(media: media, ctrl: ctrl),
+        child: SizedBox(
+            width: media.size.shortestSide * 0.2 / 3,
+            height: media.size.shortestSide * 0.4 / 6,
+            child: SquarList(pieces: [])),
       ),
     );
   }
